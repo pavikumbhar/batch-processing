@@ -1,0 +1,22 @@
+<wls:weblogic-web-app
+		xmlns:wls="http://xmlns.oracle.com/weblogic/weblogic-web-app"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://xmlns.oracle.com/weblogic/weblogic-web-app
+        http://xmlns.oracle.com/weblogic/weblogic-web-app/1.4/weblogic-web-app.xsd">
+	<wls:context-root>/batch-processing</wls:context-root>
+	<wls:container-descriptor>
+		<wls:prefer-application-packages>
+			<wls:package-name>javax.validation</wls:package-name>
+			<wls:package-name>org.hibernate.validator</wls:package-name>
+			<wls:package-name>javax.el</wls:package-name>
+			<wls:package-name>javax.persistence</wls:package-name>
+			<wls:package-name>org.slf4j.*</wls:package-name>
+			<wls:package-name>org.springframework.*</wls:package-name>
+			<wls:package-name>com.fasterxml.*</wls:package-name>
+			<wls:package-name>com.fasterxml.jackson.*</wls:package-name>
+			<wls:package-name>org.joda.time.*</wls:package-name>
+			<wls:package-name>net.minidev.json.*</wls:package-name>
+			<wls:package-name>freemarker.*</wls:package-name>
+		</wls:prefer-application-packages>
+	</wls:container-descriptor>
+</wls:weblogic-web-app>

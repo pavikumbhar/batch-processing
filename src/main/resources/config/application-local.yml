@@ -1,0 +1,35 @@
+server:
+  port: 7878
+  servlet:
+    context-path: /batch-processing
+
+spring:
+  profiles:
+    active: local
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: quartz
+    password: quartz
+    driver-class-name: oracle.jdbc.OracleDriver
+  jpa:
+    database: ORACLE
+    generate-ddl: true
+    show-sql: true
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+      naming:
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+            hibernate.dialect: org.hibernate.dialect.Oracle12cDialect
+            hibernate.show_sql: true
+            hibernate.format_sql: true
+            hibernate.generate_statistics: false
+            hibernate.hql.bulk_id_strategy: org.hibernate.hql.spi.id.inline.InlineIdsInClauseBulkIdStrategy
+
+
+app:
+    propertyLoc: src/main/resources/properties/
+        
+  
