@@ -12,7 +12,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 /**
  *
- * @author Pravin Kumbhar
+ * @author pavikumbhar
  */
 
 @Configuration
@@ -32,7 +32,7 @@ public class BaseBatchCopnfig {
         return jobRegistryBeanPostProcessor;
     }
 
-    @Bean
+   // @Bean
     public JobRepository jobRepository(final DataSource dataSource, final PlatformTransactionManager transactionManager) throws Exception {
         final JobRepositoryFactoryBean factoryBean = new JobRepositoryFactoryBean();
         factoryBean.setDatabaseType("ORACLE");

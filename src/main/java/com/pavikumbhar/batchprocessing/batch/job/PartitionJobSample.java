@@ -105,8 +105,8 @@ public class PartitionJobSample {
     }
     
     @Bean
-    public Job job() {
-        return jobs.get("job").flow(step1()).on("FAILED").to(cleanupFilesStep())//
+    public Job jobPartition() {
+        return jobs.get("jobPartition").flow(step1()).on("FAILED").to(cleanupFilesStep())//
                 .from(step1()).on("*").to(moveFilesStep())//
                 .from(moveFilesStep()).on("*").end() //
                 .from(cleanupFilesStep()).on("*").fail() //

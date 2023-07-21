@@ -23,7 +23,7 @@ import com.pavikumbhar.batchprocessing.tasklet.FtpTasklet;
 
 /**
  *
- * @author Pravin Kumbhar
+ * @author pavikumbhar
  */
 
 @Configuration

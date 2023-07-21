@@ -10,7 +10,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
 /**
- * @author pravin Kumbhar
+ * @author pavikumbhar
  */
 public abstract class AbstractScheduledJob extends QuartzJobBean {
 

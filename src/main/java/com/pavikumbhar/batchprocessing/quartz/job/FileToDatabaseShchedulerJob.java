@@ -12,27 +12,27 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  *
- * @author Pravin Kumbhar
+ * @author pavikumbhar
  */
 
 @Slf4j
 @DisallowConcurrentExecution
 public class FileToDatabaseShchedulerJob extends AbstractScheduledJob {
 
-    @Override
-    protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
-        try {
-            JobParameters jobParameters = new JobParametersBuilder().addLong("time", System.currentTimeMillis()).toJobParameters();
-            // Job job = getJobLocator().getJob("csvFileToDatabaseJob");
-            Job job = getJobLocator().getJob("writeProductJob");
+	@Override
+	protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
+		try {
+			JobParameters jobParameters = new JobParametersBuilder()
+					.addLong("time", System.currentTimeMillis())
+					.toJobParameters();
+			Job job = getJobLocator().getJob("csvFileToDatabaseJob");
+			JobExecution jobExecution = getJobLauncher().run(job, jobParameters);
+			log.info("{}_{} was completed successfully", job.getName(), jobExecution.getId());
+		} catch (Exception e) {
 
-            JobExecution jobExecution = getJobLauncher().run(job, jobParameters);
-            log.info("{}_{} was completed successfully", job.getName(), jobExecution.getId());
-        } catch (Exception e) {
+			log.error("Encountered job execution exception! {}", e);
+		}
 
-            log.error("Encountered job execution exception! {}", e);
-        }
-        
-    }
-    
+	}
+
 }

@@ -7,7 +7,7 @@ import com.pavikumbhar.batchprocessing.model.Product;
 
 /**
  *
- * @author Pravin Kumbhar
+ * @author pavikumbhar
  */
 @SuppressWarnings("serial")
 public class ProductClassifier implements Classifier<Product, ItemWriter<? super Product>> {

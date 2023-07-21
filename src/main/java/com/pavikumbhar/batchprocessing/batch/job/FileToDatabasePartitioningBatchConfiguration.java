@@ -26,7 +26,7 @@ import com.pavikumbhar.batchprocessing.model.InformationDto;
 
 /**
  *
- * @author Pravin Kumbhar
+ * @author pavikumbhar
  */
 
 @Configuration
@@ -95,9 +95,9 @@ public class FileToDatabasePartitioningBatchConfiguration extends BatchConfigura
     }
     
     @Bean
-    public JdbcBatchItemWriter<InformationDto> fileToDatabaseItemWriter() {
+    public JdbcBatchItemWriter<InformationDto> fileToDatabaseItemWriterPartitioning() {
         JdbcBatchItemWriter<InformationDto> informationWriter = new JdbcBatchItemWriter<>();
-        informationWriter.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<InformationDto>());
+        informationWriter.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>());
         informationWriter.setSql(QUERY_INSERT_INFORMATION);
         informationWriter.setDataSource(dataSource);
         return informationWriter;
@@ -128,12 +128,12 @@ public class FileToDatabasePartitioningBatchConfiguration extends BatchConfigura
     }
     
     @Bean
-    public Step processData(FlatFileItemReader<InformationDto> fileToDatabaseFlatFileItemReader, JdbcBatchItemWriter<InformationDto> fileToDatabaseItemWriter) {
+    public Step processData(FlatFileItemReader<InformationDto> fileToDatabaseFlatFileItemReader, JdbcBatchItemWriter<InformationDto> fileToDatabaseItemWriterPartitioning) {
         final int chunkSize = 50;
         return stepBuilderFactory.get("processData")//
                 .<InformationDto, InformationDto> chunk(chunkSize)//
                 .reader(fileToDatabaseFlatFileItemReader) //
-                .writer(fileToDatabaseItemWriter) //
+                .writer(fileToDatabaseItemWriterPartitioning) //
                 .build();
     }
     

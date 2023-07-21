@@ -11,7 +11,7 @@ import lombok.Getter;
 
 /**
  *
- * @author Pravin Kumbhar
+ * @author pavikumbhar
  */
 @Getter
 public abstract class BatchConfiguration {

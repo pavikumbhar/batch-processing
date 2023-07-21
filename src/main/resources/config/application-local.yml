@@ -5,7 +5,8 @@ server:
 
 spring:
   profiles:
-    active: local
+    activate:
+      on-profile: local
   datasource:
     url: jdbc:oracle:thin:@localhost:1521:xe
     username: quartz

@@ -43,7 +43,7 @@ public class DatabaseToDatabaseBatchConfiguration extends BatchConfiguration {
     @Bean
     public ItemWriter<PartialInformationDto> databaseToDatabaseItemWriter() {
         JdbcBatchItemWriter<PartialInformationDto> writer = new JdbcBatchItemWriter<>();
-        writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<PartialInformationDto>());
+        writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>());
         writer.setSql(QUERY_INSERT_PARTIAL_INFORMATION);
         writer.setDataSource(dataSource);
         return writer;

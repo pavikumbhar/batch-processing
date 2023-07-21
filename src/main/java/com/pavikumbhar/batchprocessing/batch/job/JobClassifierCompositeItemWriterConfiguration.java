@@ -110,7 +110,7 @@ public class JobClassifierCompositeItemWriterConfiguration extends BatchConfigur
     @Bean
     public ItemWriter<Product> insertJdbcBatchItemWriter() {
         JdbcBatchItemWriter<Product> writer = new JdbcBatchItemWriter<>();
-        writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<Product>());
+        writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>());
         writer.setSql("INSERT INTO PRODUCT (ID, NAME, PRICE) VALUES(:id, :name, :price)");
         writer.setDataSource(dataSource);
         writer.afterPropertiesSet();
@@ -120,7 +120,7 @@ public class JobClassifierCompositeItemWriterConfiguration extends BatchConfigur
     @Bean
     public ItemWriter<Product> updateJdbcBatchItemWriter() {
         JdbcBatchItemWriter<Product> writer = new JdbcBatchItemWriter<>();
-        writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<Product>());
+        writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>());
         writer.setSql("UPDATE PRODUCT SET NAME=:name, PRICE=:price WHERE ID=:id");
         writer.setDataSource(dataSource);
         writer.afterPropertiesSet();
@@ -130,7 +130,7 @@ public class JobClassifierCompositeItemWriterConfiguration extends BatchConfigur
     @Bean
     public ItemWriter<Product> deleteJdbcBatchItemWriter() {
         JdbcBatchItemWriter<Product> writer = new JdbcBatchItemWriter<>();
-        writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<Product>());
+        writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>());
         writer.setSql("DELETE PRODUCT WHERE ID=:id");
         writer.setDataSource(dataSource);
         writer.afterPropertiesSet();

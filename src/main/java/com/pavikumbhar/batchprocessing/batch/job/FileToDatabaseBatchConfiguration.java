@@ -22,7 +22,7 @@ import com.pavikumbhar.batchprocessing.processor.FileToDatabaseItemProcessor;
 
 /**
  *
- * @author Pravin Kumbhar
+ * @author pavikumbhar
  */
 
 @Configuration
@@ -58,7 +58,7 @@ public class FileToDatabaseBatchConfiguration extends BatchConfiguration {
     @Bean
     public JdbcBatchItemWriter<InformationDto> fileToDatabaseItemWriter() {
         JdbcBatchItemWriter<InformationDto> informationWriter = new JdbcBatchItemWriter<>();
-        informationWriter.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<InformationDto>());
+        informationWriter.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>());
         informationWriter.setSql(QUERY_INSERT_INFORMATION);
         informationWriter.setDataSource(dataSource);
         return informationWriter;

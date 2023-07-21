@@ -2,11 +2,10 @@ package com.pavikumbhar.batchprocessing.tasklet;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import org.apache.commons.io.FileUtils;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +27,6 @@ public abstract class AbstractFileArchivingTasklet implements Tasklet {
     }
 
     private String getSuffix() {
-        return "_" + new SimpleDateFormat("yyyyMMddHHmmss").format(new DateTime(DateTimeZone.UTC).toDate());
+    	return "_" + DateTimeFormatter.ofPattern("yyyyMMddHHmmss").format(LocalDateTime.now());
     }
 }

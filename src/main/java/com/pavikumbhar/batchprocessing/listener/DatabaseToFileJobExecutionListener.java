@@ -1,8 +1,9 @@
 package com.pavikumbhar.batchprocessing.listener;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-import org.joda.time.DateTime;
 import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobExecutionListener;
@@ -16,12 +17,12 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public class DatabaseToFileJobExecutionListener implements JobExecutionListener {
     
-    private DateTime startTime;
+    private LocalDateTime startTime;
     private String jobName;
 
     @Override
     public void beforeJob(JobExecution jobExecution) {
-        startTime = new DateTime();
+        startTime = LocalDateTime.now();
         jobName = jobExecution.getJobInstance().getJobName();
         log.debug("[ {} ] Job starts at : {} ", jobName, startTime);
         long jobId = jobExecution.getJobId();
@@ -31,7 +32,7 @@ public class DatabaseToFileJobExecutionListener implements JobExecutionListener 
     
     @Override
     public void afterJob(JobExecution jobExecution) {
-        DateTime stopTime = new DateTime();
+    	LocalDateTime stopTime = LocalDateTime.now();
         log.debug("[ {} ]Job stops at {}:", jobName, stopTime);
         log.debug("Total time take in millis {}:", getTimeInMillis(startTime, stopTime));
         
@@ -47,8 +48,9 @@ public class DatabaseToFileJobExecutionListener implements JobExecutionListener 
         }
     }
     
-    private long getTimeInMillis(DateTime start, DateTime stop) {
-        return stop.getMillis() - start.getMillis();
+    private long getTimeInMillis(LocalDateTime start, LocalDateTime stop) {
+        return ChronoUnit.MILLIS.between(start, stop);
+
     }
 
 }
